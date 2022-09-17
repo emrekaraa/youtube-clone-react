@@ -35,7 +35,7 @@ export default function Home() {
       <div className="flex" style={{ height: "92.5vh", width: "%100" }}>
         <Sidebar />
         {videos.length ? (
-          <div className="bg-red-500 w-full">
+          <div className="w-full">
             <InfiniteScroll
               dataLength={videos.length}
               next={() => dispatch(getHomePageVideos(true))}
@@ -43,11 +43,11 @@ export default function Home() {
               loader={<Spinner />}
               height={650}
             >
-              {videos.map((item: HomePageVideos, key) => (
-                <div className="grid gap-y-14 gap-x-8 md:grid-cols-2 lg:grid-cols-4 p-8">
+              <div className="grid gap-y-14 gap-x-8 grid-cols-4 p-8">
+                {videos.map((item: HomePageVideos, key) => (
                   <Card data={item} key={key} />
-                </div>
-              ))}
+                ))}
+              </div>
             </InfiniteScroll>
           </div>
         ) : (
